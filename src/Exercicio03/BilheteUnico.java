@@ -16,7 +16,7 @@ public class BilheteUnico {
         this.numero = random.nextInt(1000,9999 );
     }
 
-    public void passaarNaCatraca(){
+    public boolean passaarNaCatraca(){
         double valor = TARIFABASE;
         if(tipoTarifa.equalsIgnoreCase("estudante") ||
                 tipoTarifa.equalsIgnoreCase("professor")){
@@ -24,10 +24,15 @@ public class BilheteUnico {
         }
 
         if (saldo < valor){
-            return;
+            return false;
         }
 
         saldo = saldo - valor;
+        return true;
+    }
+
+    public void carregae(double valor){
+        this.saldo += valor;
     }
 
 
